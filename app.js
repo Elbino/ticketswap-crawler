@@ -6,6 +6,7 @@ const request = require('co-request');
 const cheerio = require('cheerio');
 const _ = require('lodash');
 const exec = require('child_process').exec;
+const opn = require('opn');
 
 // APP SETTINGS
 const CHECK_INTERVAL = 2;
@@ -15,7 +16,7 @@ const ERROR_INTERVAL = 2121;
 const URLMAX_TIMEOUT = 2112;
 const HOST = 'https://www.ticketswap.nl';
 //const EVENT_URL = '/event/fiesta-macumba/0f4bf5d9-a5b5-46b2-8f15-0942ef96d1e1';
-const EVENT_URL = '/event/milkshake-festival-2017/sunday/68fc1cc6-6b98-4c4c-b828-2c7fa712c579/128371';
+const EVENT_URL = '/event/paradigm-festival-2018/saturday-day/6a1f96cd-ea89-4df1-b4fa-ec67a13ae2cd/426891';
 //const EVENT_URL = '/event/a-campingflight-to-lowlands-paradise/regular/fcc6c783-6b32-4abd-8fe6-e9d0369c14df/20635';
 
 // APP VARIABLES
@@ -69,7 +70,7 @@ let ticketCrawler = function () {
 // BOT FUNCTIONS
 let botAction = {
     availableTicket: function (url, amount) {
-        exec(`open ${url}`);
+        opn(url);
         sleepTime = FOUND_INTERVAL;
         print(`${amount} TICKET(S) AVAILABLE!: \n${url}`);
         return false; // STOPS 'EACH 'LOOP
